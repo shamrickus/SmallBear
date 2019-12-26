@@ -1,0 +1,26 @@
+<div>
+  Ordered: {{token.token.created * 1000 | date: 'MM-dd-yyyy'}}
+  <div *ngIf="token.token.shipped">Shipped: {{token.token.shipped}}</div>
+</div>
+<div class="sum" fxLayout="row">
+  <div fxFlex="25%">
+    Order Summary: <br/>
+    <lazy-cart [cart]="token.cart"></lazy-cart>
+    <a href="mailto:{{token.token.email}}">{{token.token.email}}</a>
+    <span>Test {{token.token.livemode}}</span>
+  </div>
+  <div fxFlex="25%">
+    Address: <br/>
+    <app-address [address]="token.address"></app-address>
+  </div>
+  <div fxFlex="25%">
+    <button mat-raised-button (click)="shipTo()" [disabled]="getStatus().length != 2">Ship</button>
+  </div>
+  <div fxFlex="25%">
+    Progress:
+    <div fxLayout="column">
+      <span *ngFor="let status of getStatus()">{{status}}</span>
+    </div>
+  </div>
+</div>
+

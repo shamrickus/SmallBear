@@ -1,0 +1,19 @@
+mat-dialog-content, h2 {
+  color: black;
+  text-align: center;
+}
+
+span {
+  line-height: 30px;
+
+  div.well {
+    border-radius: 3px;
+    border: 1px solid rgba(100, 100, 100, .3);
+    display: inline;
+    padding: 5px;
+  }
+}
+
+button {
+  width: 100%;
+}

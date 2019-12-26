@@ -1,0 +1,75 @@
+<div
+  fxLayout.gt-sm="row"
+  fxLayout.lt-md="column"
+  fxLayoutGap="30px"
+>
+  <div class="cartCard" fxFlex="0 1 800px" fxFlex.lt-lg="1 1 auto" fxFlexOrder.lt-md="2" fxFlexOrder.gt-sm="1">
+    <mat-card class="shoppingCart" style="margin-left:auto"
+              fxFlex.gt-md="0 1 800px" fxFlex.lt-lg="grow"
+              class="sb-accent-light-opaque">
+      <mat-card-title>
+        <mat-card-subtitle>
+
+        </mat-card-subtitle>
+      </mat-card-title>
+      <h4 *ngIf="getCount() == 0">You have nothing in your cart</h4>
+      <mat-card-content class="shoppingCartContent"
+                        *ngFor="let aggregate of getList()"
+                        [@cardOut]="getState(aggregate)">
+        <div fxLayout="row" fxFlexAlign="center" fxLayoutGap="5px"
+             fxLayoutGap.lt-md="2px">
+          <div fxFlexAlign="center">
+            <button mat-icon-button (click)="changeState(aggregate)" color="accent" appCart [product]="aggregate.item"
+                    [removeAll]="true">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </div>
+          <img alt="{{aggregate.item.name}}" fxFlexAlign="center" mat-card-md-image
+               src="assets/{{aggregate.item.name}}_small.jpg"/>
+          <div fxFlexAlign="center" fxFlex="grow" fxLayout="column">
+            <span style="font-size:30px;margin-left:10px;">{{aggregate.item.name}}</span>
+          </div>
+          <div fxLayout.gt-sm="row" fxLayout.lt-md="column">
+            <div fxFlexAlign="center" fxFlex="none" class="numItems">
+              <input class="well" type="number" max="99" min="1" appCartReview [product]="aggregate"
+                     value="{{aggregate.count}}"/>
+            </div>
+            <div fxFlexAlign="center" fxFlex="none" class="sum">
+              <span>{{getSum(aggregate) | currency}}</span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlexOrder.lt-md="1" fxFlexOrder.gt-sm="2" fxFlex.lt-md="auto" fxFlex.gt-sm="250px"
+       class="sticky cartCardCheckout">
+    <mat-card fxFlex="0 1 250px" fxFlex.lt-lg="auto"
+              fxLayout="column"
+              class="sb-accent-light">
+      <mat-card-title>
+        <div fxLayout="row">
+          Shopping Cart
+          <button mat-icon-button (click)="toTop()">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </button>
+        </div>
+        <mat-card-subtitle fxLayout.gt-sm="column" fxLayout.lt-md="row" fxLayoutGap.lt-md="10px">
+          <span>Total: {{getTotal() | currency}}</span>
+          <br/>
+          <span>{{getCount()}} items</span>
+        </mat-card-subtitle>
+      </mat-card-title>
+      <mat-card-content fxHide.lt-md="true" fxFlex>
+      </mat-card-content>
+      <mat-card-actions fxLayout="column">
+        <span class="cannotCheckout" *ngIf="getEmail() == null">Please sign in first</span>
+        <span class="cannotCheckout" *ngIf="getCount() == 0">You need items to checkout</span>
+        <button appMakePayment [price]="getTotal()" [email]="getEmail()" [userId]="getUserId()"
+                [disabled]="getCount() == 0 || getEmail() == null" mat-raised-button color="accent" fxFlex="grow">
+          Checkout
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

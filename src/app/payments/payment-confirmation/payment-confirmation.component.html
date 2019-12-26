@@ -1,0 +1,12 @@
+<h2 mat-dialog-title class="sb-primary-light">Payment Submitted</h2>
+<mat-dialog-content class="sb-primary-light">
+  <span>
+    Your payment has been submitted for processing.<br/>
+    You're confirmation number is <div class="well sb-accent">{{data.token}}</div>.<br/>
+    An email will be sent to {{data.email}} when the processing is complete.<br/>
+    If you have any issues or questions, you can email us at <a href="mailto:SmallBearCoffee@gmail.com">SmallBearCoffee@gmail.com</a>
+  </span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="sb-accent" mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,52 @@
+div {
+
+  h1 {
+    text-align: center;
+    color: black;
+  }
+
+  .mat-dialog-content {
+    overflow: initial;
+
+    .mat-raised-button {
+      margin-bottom: 5px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
+
+$google: #dd4b39;
+$twitter: #55ACEE;
+$facebook: #3b5998;
+
+button {
+  color:white;
+
+  &.go {
+    background-color: $google;
+  }
+  &.tw {
+    background-color: $twitter;
+  }
+  &.fb {
+    background-color: $facebook;
+  }
+
+  .fa {
+    color:white;
+    vertical-align: unset;
+    &.fa-facebook {
+      background: $facebook;
+    }
+
+    &.fa-twitter {
+      background: $twitter;
+    }
+
+    &.fa-google {
+      background: $google;
+    }
+  }
+}

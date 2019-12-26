@@ -1,0 +1,44 @@
+<app-loading *ngIf="!(productObservable | async)"></app-loading>
+<div *ngIf="(productObservable | async)" matSort (matSortChange)="sortData($event)">
+  <mat-card id="header" class="sb-accent-light-opaque">
+    <mat-card-title>
+      Store
+    </mat-card-title>
+    <mat-card-content fxLayout="row">
+      <mat-form-field>
+        <mat-select placeholder="Sort By" class="sb-accent-light">
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="price">Price</mat-option>
+          <mat-option value="roast">Roast</mat-option>
+          <mat-option value="notes">Notes</mat-option>
+          <mat-option value="price">Price</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  <div class="productAggregate">
+    <mat-grid-list appFlexGrid rowHeight="300px" cols="2" gutterSize="15px">
+      <mat-grid-tile *ngFor="let bean of sortedBeans">
+        <mat-card class="sb-accent-opaque" fxLayout="column" fxFlex="grow">
+          <div>
+            <img alt="{{bean.name}} image" class="productImage" src="assets/{{bean.name}}_small.jpg"/>
+            <span style="display:block;" fxLayout="column">
+                <span class="title">{{bean.name}}<br/></span>
+                <span fxFlex="grow" fxLayout="column">
+                    <span class="roast"><b>Roast:</b> {{bean.roast}}</span>
+                    <span class="origin"><b>Origin:</b> {{bean.origin}}</span>
+                    <span class="notes"><b>Notes:</b> {{bean.notes}}</span>
+                </span>
+            </span>
+          </div>
+          <div fxFlex></div>
+          <div fxLayout="row" class="price">
+            <b>{{bean.price | currency}} / {{bean.qty}}</b>
+          </div>
+          <button fxFlex mat-raised-button class="checkoutButton sb-accent-dark-opaque" appCart [product]="bean"
+                  [display]="true" [remove]="false"></button>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

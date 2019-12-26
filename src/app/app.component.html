@@ -1,0 +1,46 @@
+<div id="mainContent" class="bg sb-primary-light">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div>
+        <div id="admin" (click)="getPW()"></div>
+        <img id="logo" alt="Logo" src="assets/logo/SmallBearPOS_Lite.png"/>
+      </div>
+      <div fxShow="false" fxShow.gt-sm id="navLinks" fxLayout="row">
+        <button mat-raised-button color="accent" *ngFor="let routeLink of routeLinks"
+                routerLinkActive #rla="routerLinkActive"
+                [ngClass]="{'active': rla.isActive}"
+                [routerLink]="routeLink.path">
+          {{routeLink.name}}
+        </button>
+      </div>
+      <div fxFlex="1 1 auto"></div>
+      <div fxShow="false" fxShow.gt-sm fxLayout="row">
+        <app-login></app-login>
+        <button color="accent" mat-raised-button appCartDisplay (click)="this.router.navigateByUrl('cart')"></button>
+      </div>
+      <div fxShow="true" fxHide.gt-sm fxLayout="row">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon color="accent">menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let routeLink of routeLinks"
+            routerLinkActive #rla="routerLinkActive"
+            [ngClass]="{'active': rla.isActive}"
+            [routerLink]="routeLink.path">
+      {{routeLink.name}}
+    </button>
+    <div fxLayout="column">
+      <button appCartDisplay mat-button (click)="this.router.navigateByUrl('cart')"></button>
+      <app-login></app-login>
+    </div>
+  </mat-menu>
+  <main fxShow="{{!test}}" style="height:100%" [@routerTransition]="getState(route)">
+    <router-outlet style="height:100%" #route="outlet"></router-outlet>
+  </main>
+
+  <simple-notifications (onDestroy)="this._notification.onDestroy($event)"
+                        (onCreate)="this._notification.onCreate($event)"></simple-notifications>
+</div>

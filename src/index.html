@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Small Bear Coffee</title>
+  <base href="/">
+  <style type="text/css">
+    body, html {
+      height: 100%;
+      background-color: #d7ccc8;
+    }
+
+    .boot-logo {
+      background-image: url(assets/logo/SmallBearStampPOS_Small.png);
+      background-size: cover;
+      height: 100px;
+      width: 100px;
+      content: "Loading";
+    }
+
+    .boot-app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%
+    }
+
+    .boot-app-loading .boot-spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto
+    }
+
+    .boot-app-loading .boot-spinner .boot-path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      stroke: #455a64
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px
+      }
+    } </style>
+
+  <meta name="viewport" content="width=500px, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Browser Touch Emulation -->
+  <!--  <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script> -->
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+
+
+</head>
+<body style="margin: 0;" class="sb-primary-light">
+<app-root style="height:100%">
+  <div class="boot-app-loading">
+    <div class="boot-logo"></div>
+    <svg class="boot-spinner" viewBox="25 25 50 50">
+      <circle class="boot-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10">
+        Loading
+      </circle>
+    </svg>
+  </div>
+</app-root>
+</body>
+</html>

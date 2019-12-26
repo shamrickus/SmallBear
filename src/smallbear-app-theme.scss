@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$smallbear-app-primary:
+  mat-palette($mat-brown);
+$smallbear-app-accent:
+mat-palette($mat-blue-grey, 500, 400, 700);
+$smallbear-app-warn:
+  mat-palette($mat-red);
+$smallbear-app-theme:
+  mat-light-theme($smallbear-app-accent, $smallbear-app-primary, $smallbear-app-warn);
+
+@include angular-material-theme($smallbear-app-theme);

@@ -1,0 +1,13 @@
+<div fxLayout="column" fxFlex="grow" class="sb-primary-light">
+  <h1 mat-dialog-title fxFlex>Login</h1>
+  <div mat-dialog-content fxLayout="column">
+    <button mat-raised-button class="go" (click)="signInGoogle()">
+      <mat-icon class="fa fa-google"></mat-icon>
+      Sign in With Google
+    </button>
+    <button mat-raised-button class="fb" (click)="signInFacebook()">
+      <mat-icon class="fa fa-facebook"></mat-icon>
+      Sign in With Facebook
+    </button>
+  </div>
+</div>

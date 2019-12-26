@@ -1,0 +1,7 @@
+<div>
+  {{cart.total | currency}}
+  <div *ngFor="let prod of cart.items">
+    <span>{{prod.count}}</span>
+    <span>{{prod.item.name}}</span>
+  </div>
+</div>

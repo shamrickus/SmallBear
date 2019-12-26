@@ -1,0 +1,14 @@
+<button mat-button
+        (click)="openDialog()"
+        *ngIf="!this.auth.currentUser; else alreadyLoggedIn">
+  Login
+</button>
+<ng-template #alreadyLoggedIn>
+  <div fxLayout="row" fxLayout.lt-md="column">
+    <span fxFlex>{{this.auth.currentUser.displayName}}</span>
+    <button mat-button
+            (click)="signOut()">
+      Sign Out
+    </button>
+  </div>
+</ng-template>
