@@ -6,14 +6,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyBXFDK3CtBwcwShH8DkhMwar7y1_quE9c4',
-    authDomain: '***REMOVED***.firebaseapp.com',
-    databaseURL: 'https://***REMOVED***.firebaseio.com',
-    projectId: '***REMOVED***',
-    storageBucket: '***REMOVED***.appspot.com',
-    messagingSenderId: '168829964117'
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: ''
   },
-  stripeKey: 'pk_test_xLEeXcKg5unh7XmAKBYn0Yvx',
+  stripeKey: '',
   authPassword: ''
 
 };
