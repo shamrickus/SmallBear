@@ -1,16 +1,16 @@
 import {AfterViewInit, Directive, ViewChild} from '@angular/core';
-import {ObservableMedia} from '@angular/flex-layout';
+import {MediaObserver} from '@angular/flex-layout';
 import {MatGridList} from '@angular/material';
 
 @Directive({
   selector: '[appFlexGrid]'
 })
 export class FlexGridDirective implements  AfterViewInit {
-  constructor(private matGridList: MatGridList, private media: ObservableMedia) { }
+  constructor(private matGridList: MatGridList, private media: MediaObserver) { }
 
   ngAfterViewInit() {
     this.update();
-    this.media.subscribe(change => {
+    this.media.asObservable().subscribe(change => {
       this.update();
     })
   }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DbService} from '../../core/db/db.service';
 import {IToken} from '../lazy.module';
 import {List} from 'linqts';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'admin-page',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Sort} from '@angular/material';
 import {DbService} from '../../core/db/db.service';
 import {IProduct} from '../../payments/payment.module';
