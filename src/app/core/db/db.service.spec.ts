@@ -22,12 +22,10 @@ describe('DbService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        DbService,
+        {provide: DbService, useValue: {}},
         {provide: AuthService, useValue: {authChange: new EventEmitter()}}
       ],
       imports: [
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule
       ]
     });
   });

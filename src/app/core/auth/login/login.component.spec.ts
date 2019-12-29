@@ -20,16 +20,13 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [MaterialModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule,
-        AngularFireDatabaseModule,
         RouterTestingModule.withRoutes([]),
         SimpleNotificationsModule.forRoot()
       ],
       providers: [
-        AuthService,
-        NotificationService,
-        DbService
+        {provide: AuthService, useValue: {}},
+        {provide: NotificationService, useValue: {}},
+        {provide: DbService, useValue: {}}
       ]
     })
     .compileComponents();

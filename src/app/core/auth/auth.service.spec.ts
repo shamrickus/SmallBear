@@ -58,14 +58,11 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,
-        AngularFireAuthModule,
         RouterTestingModule.withRoutes([])
       ],
       providers: [
-        AuthService,
-        DbService
+        {provide: AuthService, useValue: {}},
+        {provide: DbService, useValue: {}}
       ]
     });
   });
